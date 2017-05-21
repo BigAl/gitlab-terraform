@@ -65,7 +65,7 @@ module "gitlab_asg" {
   iam_instance_profile = "${var.iam_instance_profile}"
   key_name = "${var.key_name}"
   security_group = "${var.security_group_id}"
-  #user_data = "${var.user_data_file}"
+  user_data = "${var.user_data_file}"
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"
   asg_minimum_number_of_instances = "${var.asg_minimum_number_of_instances}"
