@@ -1,1 +1,1 @@
-# gtilab-terraform
+# gitlab-terraform
