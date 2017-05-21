@@ -11,3 +11,14 @@ resource "aws_db_parameter_group" "gitlab_pgsql" {
   name   = "gitlab-pg"
   family = "postgres9.3"
 }
+
+resource "aws_iam_role" "role" {
+  name = "gitlab-role"
+
+  assume_role_policy = "${data.aws_iam_policy_document.ec2-allow-assume-policy.json}"
+}
+
+resource "aws_iam_instance_profile" "app_profile" {
+  name  = "gitlab-profile"
+  role = "${aws_iam_role.role.name}"
+}

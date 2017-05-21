@@ -18,9 +18,7 @@ variable "ami_id" {
 variable "instance_type" {
   default = "t2.medium"
 }
-variable "iam_instance_profile" {
-  default = "gitlab_profile"
-}
+
 variable "key_name" {
   default = "Platfrom"
 }

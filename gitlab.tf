@@ -62,7 +62,7 @@ module "gitlab_asg" {
   lc_name = "${var.lc_name}"
   ami_id = "${var.ami_id}"
   instance_type = "${var.instance_type}"
-  iam_instance_profile = "${var.iam_instance_profile}"
+  iam_instance_profile = "${aws_iam_instance_profile.app_profile.id}"
   key_name = "${var.key_name}"
   security_group = "${var.security_group_id}"
   user_data = "${var.user_data_file}"
