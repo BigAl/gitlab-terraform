@@ -22,3 +22,27 @@ resource "aws_iam_instance_profile" "app_profile" {
   name  = "gitlab-profile"
   role = "${aws_iam_role.role.name}"
 }
+
+# security group for EC2 instanace
+resource "aws_security_group" "instance" {
+  name        = "gitlab_instance_sg"
+  description = "gitlab instance security group"
+  vpc_id      = "${var.gitlab_vpc_id}"
+
+# review this it should be restrictred to only from elb SG
+  # HTTP access from anywhere
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # outbound internet access
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}

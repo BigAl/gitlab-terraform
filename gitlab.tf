@@ -64,7 +64,7 @@ module "gitlab_asg" {
   instance_type = "${var.instance_type}"
   iam_instance_profile = "${aws_iam_instance_profile.app_profile.id}"
   key_name = "${var.key_name}"
-  security_group = "${var.security_group_id}"
+  security_group = "${aws_security_group.instance.id}"
   user_data = "${var.user_data_file}"
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"

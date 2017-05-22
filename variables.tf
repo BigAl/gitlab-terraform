@@ -22,9 +22,7 @@ variable "instance_type" {
 variable "key_name" {
   default = "Platfrom"
 }
-variable "security_group_id" {
-  default = "sg-abcdef"
-}
+
 variable "user_data_file" {
   default = "userdata.sh"
 }
