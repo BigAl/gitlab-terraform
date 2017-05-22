@@ -6,9 +6,9 @@ resource "aws_elb" "web-elb" {
   security_groups = ["${aws_security_group.elb.id}"]
 
   listener {
-    instance_port      = 80
+    instance_port      = 8080
     instance_protocol  = "http"
-    lb_port            = 443
+    lb_port            = 80
     lb_protocol        = "https"
 # once we have a certificate_domain enable this
 #    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
@@ -36,10 +36,10 @@ resource "aws_security_group" "elb" {
     Name = "${var.project}_sg"
   }
 
-  # HTTPS access from anywhere
+  # HTTP access from anywhere
   ingress {
-    from_port   = 443
-    to_port     = 443
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
