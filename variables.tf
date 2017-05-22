@@ -44,13 +44,13 @@ variable "instance_type" {
   default = "t2.medium"
 }
 variable "key_name" {
-  default = "gtilab-test"
+  default = "gitlab-test"
 }
 variable "user_data_file" {
   default = "userdata.sh"
 }
 variable "asg_name" {
-  default = "gtilab-asg"
+  default = "gitlab-asg"
 }
 variable "asg_number_of_instances" {
   default = 2

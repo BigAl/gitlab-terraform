@@ -9,7 +9,7 @@ resource "aws_elb" "web-elb" {
     instance_port      = 8080
     instance_protocol  = "http"
     lb_port            = 80
-    lb_protocol        = "https"
+    lb_protocol        = "http"
 # once we have a certificate_domain enable this
 #    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
   }
