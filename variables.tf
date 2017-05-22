@@ -8,10 +8,6 @@ variable "vpc_id" {
   default     = "vpc-01537b67"
 }
 
-variable "private_subnet_list" {
-  type        = "list"
-  default     = ["subnet-73d0da5e", "subnet-4e6a272b"]
-}
 
 variable "certificate_domain" {
   default = "*.cloudops.aconex.com"
@@ -71,4 +67,8 @@ variable "private_subnets" {
 }
 variable "dmz_subnets" {
   default = "subnet-2d652848, subnet-43dcd66e"
+}
+variable "dmz_subnet_list" {
+  type        = "list"
+  default     = ["subnet-2d652848", "subnet-43dcd66e"]
 }

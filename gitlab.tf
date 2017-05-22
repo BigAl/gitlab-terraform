@@ -3,7 +3,7 @@
 # Redis (done)
 # Shared filesystem (done)
 # ASG with gitlab image ( need correct AMI for us-east-1)
-# ELB (done need correct subnets)
+# ELB (done)
 # Security groups ( WPA )
 # Created elsewhere VPC and subnets. ( Use demo account for now )
 

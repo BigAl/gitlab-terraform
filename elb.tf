@@ -2,7 +2,7 @@
 resource "aws_elb" "web-elb" {
   name = "${var.project}-elb"
 
-  subnets = "${var.private_subnet_list}"
+  subnets = "${var.dmz_subnet_list}"
   security_groups = ["${aws_security_group.elb.id}"]
 
   listener {
