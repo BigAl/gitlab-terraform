@@ -21,9 +21,24 @@ variable "env" {
 variable "lc_name" {
   default = "gtilab-lc"
 }
-## find the gitlab ami
+## Gitab CE ami 9.0.2 release 21/4/2017
+# Asia Pacific (Mumbai)	ami-9a4033f5
+# EU (London)	ami-a0190dc4
+# EU (Ireland)	ami-6f86b809
+# Asia Pacific (Seoul)	ami-6b974505
+# Asia Pacific (Tokyo)	ami-bbc7e0dc
+# South America (Sao Paulo)	ami-4b593a27
+# Canada (Central)	ami-c703bea3
+# Asia Pacific (Singapore)	ami-48902f2b
+# Asia Pacific (Sydney)	ami-c3919ea0
+# EU (Frankfurt)	ami-6328f80c
+# US East (N. Virginia)	ami-81991f97
+# US East (Ohio)	ami-1dfade78
+# US West (N. California)	ami-19461c79
+# US West (Oregon)	ami-7c099e1c
+
 variable "ami_id" {
-  default = "ami-sadfasd"
+  default = "ami-81991f97"
 }
 variable "instance_type" {
   default = "t2.medium"
