@@ -50,7 +50,7 @@ module "efs_mount" {
 module "redis" {
   source         = "github.com/FitnessKeeper/terraform-redis-elasticache?ref=1.0.0"
   env            = "${var.env}"
-  name           = "gitlab"
+  name           = "${var.project}"
   redis_clusters = "2"
   redis_failover = "true"
   subnets        = "${var.data_subnet_list}"
