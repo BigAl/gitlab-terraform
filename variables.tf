@@ -1,6 +1,24 @@
+variable "project" {
+  type        = "string"
+  default     = "gitlab"
+}
 variable "gitlab_vpc_id" {
   type        = "string"
   default     = "vpc-01537b67"
+}
+
+variable "vpc_id" {
+  type        = "string"
+  default     = "vpc-01537b67"
+}
+
+variable "private_subnets" {
+  type        = "list"
+  default = ["subnet-4968252c", "subnet-26d2d80b"]
+}
+
+variable "certificate_domain" {
+  default = "*.cloudops.aconex.com"
 }
 
 variable "env" {
@@ -18,11 +36,9 @@ variable "ami_id" {
 variable "instance_type" {
   default = "t2.medium"
 }
-
 variable "key_name" {
   default = "Platfrom"
 }
-
 variable "user_data_file" {
   default = "userdata.sh"
 }
