@@ -48,7 +48,7 @@ module "efs_mount" {
 }
 
 module "redis" {
-  source         = "github.com/FitnessKeeper/terraform-redis-elasticache?ref=1.0.0"
+  source         = "github.com/BigAl/tf_aws_elasticache_redis?ref=remove-vpc-tags"
   env            = "${var.env}"
   name           = "${var.project}"
   redis_clusters = "2"
