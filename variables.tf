@@ -44,7 +44,7 @@ variable "instance_type" {
   default = "t2.medium"
 }
 variable "key_name" {
-  default = "Platfrom"
+  default = "gtilab-test"
 }
 variable "user_data_file" {
   default = "userdata.sh"
