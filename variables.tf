@@ -53,7 +53,7 @@ variable "asg_name" {
   default = "gitlab-asg"
 }
 variable "asg_number_of_instances" {
-  default = 2
+  default = 1
 }
 variable "asg_minimum_number_of_instances" {
   default = 1
