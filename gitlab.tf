@@ -1,15 +1,15 @@
 # What we need
-# Postgress DB
-# Redis
-# Shared filesystem
-# ASG with gitlab image
-# ELB
-# Security groups
-# Created elsewhere VPC and subnets.
+# Postgress DB (done)
+# Redis (done)
+# Shared filesystem (done)
+# ASG with gitlab image ( need correct AMI for us-east-1)
+# ELB (done need correct subnets)
+# Security groups ( WPA )
+# Created elsewhere VPC and subnets. ( Use demo account for now need to get id list)
 
 module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
-  vpc_id = "${var.gitlab_vpc_id}"
+  vpc_id = "${var.vpc_id}"
   allocated_storage = "50"
   engine_version = "9.3.14"
   instance_type = "db.t2.medium"
@@ -43,7 +43,7 @@ module "efs_mount" {
 
   name    = "gitlab-nfs"
   subnets = "subnet-4968252c, subnet-26d2d80b"
-  vpc_id  = "${var.gitlab_vpc_id}"
+  vpc_id  = "${var.vpc_id}"
 
 }
 
@@ -54,7 +54,7 @@ module "redis" {
   redis_clusters = "2"
   redis_failover = "true"
   subnets        = ["subnet-4968252c", "subnet-26d2d80b"]
-  vpc_id         = "${var.gitlab_vpc_id}"
+  vpc_id         = "${var.vpc_id}"
 }
 
 module "gitlab_asg" {

@@ -27,7 +27,7 @@ resource "aws_iam_instance_profile" "app_profile" {
 resource "aws_security_group" "instance" {
   name        = "gitlab_instance_sg"
   description = "gitlab instance security group"
-  vpc_id      = "${var.gitlab_vpc_id}"
+  vpc_id      = "${var.vpc_id}"
 
 # review this it should be restrictred to only from elb SG
   # HTTP access from anywhere

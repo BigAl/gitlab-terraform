@@ -2,10 +2,6 @@ variable "project" {
   type        = "string"
   default     = "gitlab"
 }
-variable "gitlab_vpc_id" {
-  type        = "string"
-  default     = "vpc-01537b67"
-}
 
 variable "vpc_id" {
   type        = "string"
