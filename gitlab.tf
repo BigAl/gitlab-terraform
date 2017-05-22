@@ -5,7 +5,7 @@
 # ASG with gitlab image ( need correct AMI for us-east-1)
 # ELB (done need correct subnets)
 # Security groups ( WPA )
-# Created elsewhere VPC and subnets. ( Use demo account for now need to get id list)
+# Created elsewhere VPC and subnets. ( Use demo account for now )
 
 module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
@@ -42,7 +42,7 @@ module "efs_mount" {
   source = "github.com/manheim/tf_efs_mount"
 
   name    = "gitlab-nfs"
-  subnets = "subnet-4968252c, subnet-26d2d80b"
+  subnets = "${var.data_subnets}"
   vpc_id  = "${var.vpc_id}"
 
 }
@@ -53,7 +53,7 @@ module "redis" {
   name           = "gitlab"
   redis_clusters = "2"
   redis_failover = "true"
-  subnets        = ["subnet-4968252c", "subnet-26d2d80b"]
+  subnets        = "${var.data_subnet_list}"
   vpc_id         = "${var.vpc_id}"
 }
 
@@ -72,5 +72,5 @@ module "gitlab_asg" {
   load_balancer_names = "${var.elb_names}"
   health_check_type = "${var.health_check_type}"
   availability_zones = "${var.availability_zones}"
-  vpc_zone_subnets = "${var.vpc_zone_subnets}"
+  vpc_zone_subnets = "${var.private_subnets}"
 }
