@@ -7,6 +7,10 @@
 # Security groups ( WPA )
 # Created elsewhere VPC and subnets. ( Use demo account for now )
 
+resource "aws_sns_topic" "gitlab_pgsql_threshold" {
+  name = "gitlab-pgsql-threshold-topic"
+}
+
 module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
   vpc_id = "${var.vpc_id}"
@@ -32,7 +36,7 @@ module "postgresql_rds" {
   alarm_disk_queue_threshold = "10"
   alarm_free_disk_threshold = "5000000000"
   alarm_free_memory_threshold = "128000000"
-  alarm_actions = ["arn:aws:sns..."]
+  alarm_actions = ["${aws_sns_topic.gitlab_pgsql_threshold.arn}"]
 
   project = "gitlab"
   environment = "${var.env}"

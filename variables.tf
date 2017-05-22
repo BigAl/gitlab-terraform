@@ -15,7 +15,7 @@ variable "certificate_domain" {
 
 variable "env" {
   type        = "string"
-  default     = "Production"
+  default     = "production"
 }
 
 variable "lc_name" {
