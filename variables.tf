@@ -62,7 +62,7 @@ variable "elb_names" {
   default = "gitlab-elb"
 }
 variable "health_check_type" {
-  default = "ELB"
+  default = "EC2"
 }
 variable "availability_zones" {
   default = "us-east-1a,us-east-1b"
