@@ -79,12 +79,12 @@ module "gitlab_asg" {
   vpc_zone_subnets = "${var.private_subnets}"
 }
 
-# Need to add the EC2 security group to database_security_group_id
+# Add EC2 security group to database_security_group_id
 resource "aws_security_group_rule" "PostgresIngress200" {
   type                     = "ingress"
   from_port                = 5432
   to_port                  = 5432
   protocol                 = "tcp"
-  security_group_id        = "${module.postgresql_rds.database_security_group_id}" #This will be the database_security_group_id
-  source_security_group_id = "${aws_security_group.instance.id}" # This will be the SG of the EC2 instance
+  security_group_id        = "${module.postgresql_rds.database_security_group_id}"
+  source_security_group_id = "${aws_security_group.instance.id}"
 }
