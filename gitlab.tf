@@ -5,6 +5,9 @@
 # ASG with gitlab image ( need correct AMI for us-east-1)
 # ELB (done)
 # Security groups ( WPA )
+#  EC2 can talk to REDIS
+#  EC2 can talk to postgres
+#  Can ELB talk to EC2? with will be inbound SG rule on EC2 currently port 80 from anywhere
 # Created elsewhere VPC and subnets. ( Use demo account for now )
 
 resource "aws_sns_topic" "gitlab_pgsql_threshold" {
