@@ -7,8 +7,9 @@
 # Security groups ( WPA )
 #  EC2 can talk to REDIS
 #  EC2 can talk to postgres
-#  Can ELB talk to EC2? with will be inbound SG rule on EC2 currently port 80 from anywhere
+#  ELB can to to EC2
 # Created elsewhere VPC and subnets. ( Use demo account for now )
+# EFS need to mount to EC2 instance
 
 resource "aws_sns_topic" "gitlab_pgsql_threshold" {
   name = "gitlab-pgsql-threshold-topic"

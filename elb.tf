@@ -18,7 +18,7 @@ resource "aws_elb" "web-elb" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:80/healthcheck/heartbeat"
+    target              = "HTTP:80/explore"
     interval            = 5
   }
 
