@@ -37,6 +37,13 @@ resource "aws_security_group" "instance" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  # temporary SSH access
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["175.45.105.33/32"]
+  }
 
   # outbound internet access
   egress {
