@@ -42,7 +42,7 @@ resource "aws_security_group" "instance" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["175.45.105.33/32"]
+    cidr_blocks = ["192.168.38.29/32"]
   }
 
   # outbound internet access
