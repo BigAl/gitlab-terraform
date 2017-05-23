@@ -10,6 +10,7 @@
 #  ELB can to to EC2
 # Created elsewhere VPC and subnets. ( Use demo account for now )
 # EFS need to mount to EC2 instance
+# EFS resource need the EC2 Instance SG added to it.
 
 resource "aws_sns_topic" "gitlab_pgsql_threshold" {
   name = "gitlab-pgsql-threshold-topic"
@@ -72,7 +73,7 @@ module "gitlab_asg" {
   instance_type = "${var.instance_type}"
   iam_instance_profile = "${aws_iam_instance_profile.app_profile.id}"
   key_name = "${var.key_name}"
-  security_group = "${aws_security_group.instance.id}"
+  security_group = ["${aws_security_group.instance.id}", "${module.efs_mount.ec2_security_group_id}"]
   user_data = "${var.user_data_file}"
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"

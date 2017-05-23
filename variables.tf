@@ -19,7 +19,7 @@ variable "env" {
 }
 
 variable "lc_name" {
-  default = "gtilab-lc"
+  default = "gitlab-lc"
 }
 ## Gitab CE ami 9.0.2 release 21/4/2017
 # Asia Pacific (Mumbai)	ami-9a4033f5
