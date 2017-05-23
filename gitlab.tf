@@ -12,6 +12,19 @@
 # EFS need to mount to EC2 instance
 # EFS resource need the EC2 Instance SG added to it.
 
+data "template_file" "userdata" {
+  template = "${file("${path.module}/templates/userdata.tpl")}"
+
+  vars {
+    fs_id = "${module.efs_mount.file_system_id}"
+    region = "${data.aws_region.current.name}"
+  }
+}
+
+data "aws_region" "current" {
+  current = true
+}
+
 resource "aws_sns_topic" "gitlab_pgsql_threshold" {
   name = "gitlab-pgsql-threshold-topic"
 }
@@ -48,7 +61,7 @@ module "postgresql_rds" {
 }
 
 module "efs_mount" {
-  source = "github.com/manheim/tf_efs_mount"
+  source = "github.com/BigAl/tf_efs_mount"
 
   name    = "gitlab-nfs"
   subnets = "${var.data_subnets}"
@@ -74,7 +87,7 @@ module "gitlab_asg" {
   iam_instance_profile = "${aws_iam_instance_profile.app_profile.id}"
   key_name = "${var.key_name}"
   security_group = ["${aws_security_group.instance.id}", "${module.efs_mount.ec2_security_group_id}"]
-  user_data = "${var.user_data_file}"
+  user_data = "${data.template_file.userdata.rendered}"
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"
   asg_minimum_number_of_instances = "${var.asg_minimum_number_of_instances}"

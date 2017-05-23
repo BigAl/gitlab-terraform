@@ -46,9 +46,6 @@ variable "instance_type" {
 variable "key_name" {
   default = "gitlab-test"
 }
-variable "user_data_file" {
-  default = "userdata.sh"
-}
 variable "asg_name" {
   default = "gitlab-asg"
 }
