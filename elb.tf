@@ -23,8 +23,11 @@ resource "aws_elb" "web-elb" {
   }
 
   tags {
-    Name = "${var.project}-elb"
-  }
+      Name      = "${var.project} ELB"
+      custodian = "${var.custodian}"
+      instance  = "infra"
+      product   = "${var.project}"
+    }
 }
 
 resource "aws_security_group" "elb" {
@@ -33,7 +36,10 @@ resource "aws_security_group" "elb" {
   vpc_id      = "${var.vpc_id}"
 
   tags {
-    Name = "${var.project}_sg"
+    Name      = "${var.project} ELB SG"
+    custodian = "${var.custodian}"
+    instance  = "infra"
+    product   = "${var.project}"
   }
 
   # HTTP access from anywhere

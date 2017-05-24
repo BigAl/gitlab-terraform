@@ -1,4 +1,7 @@
-
+variable "custodian" {
+  type        = "string"
+  default     = "Delivery Engineering"
+}
 variable "db_database" {
   type        = "string"
   default     = "gitlab_production"

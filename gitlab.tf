@@ -42,7 +42,7 @@ module "postgresql_rds" {
   source = "github.com/azavea/terraform-aws-postgresql-rds"
   vpc_id = "${var.vpc_id}"
   allocated_storage = "50"
-  engine_version = "9.6.2"
+  engine_version = "9.5.6"
   instance_type = "db.t2.medium"
   storage_type = "gp2"
   database_identifier = "${var.project}-pgsql"
@@ -79,7 +79,7 @@ module "efs_mount" {
 }
 
 module "redis" {
-  source         = "github.com/BigAl/tf_aws_elasticache_redis?ref=remove-vpc-tags"
+  source         = "github.com/terraform-community-modules/tf_aws_elasticache_redis?ref=1.0.1"
   env            = "${var.env}"
   name           = "${var.project}"
   redis_clusters = "2"
