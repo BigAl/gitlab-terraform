@@ -86,6 +86,7 @@ module "redis" {
   redis_failover = "true"
   subnets        = "${var.data_subnet_list}"
   vpc_id         = "${var.vpc_id}"
+  allowed_security_groups = "${aws_security_group.instance.id}"
 }
 
 module "gitlab_asg" {
