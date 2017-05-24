@@ -1,3 +1,29 @@
+
+variable "db_database" {
+  type        = "string"
+  default     = "gitlab_production"
+}
+variable "db_username" {
+  type        = "string"
+  default     = "gtilab"
+}
+variable "db_password" {
+  type        = "string"
+  default     = "password"
+}
+variable "db_port" {
+  type        = "string"
+  default     = "5432"
+}
+variable "redis_port" {
+  type        = "string"
+  default     = "6379"
+}
+variable "mount_point" {
+  description = "Mountpoint for the efs filesystem"
+  type        = "string"
+  default     = "/gitlab-data"
+}
 variable "project" {
   type        = "string"
   default     = "gitlab"

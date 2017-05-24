@@ -19,6 +19,14 @@ data "template_file" "userdata" {
   vars {
     fs_id = "${module.efs_mount.file_system_id}"
     region = "${data.aws_region.current.name}"
+    db_database = "${var.db_database}"
+    db_username = "${var.db_username}"
+    db_password = "${var.db_password}"
+    db_host = "${module.postgresql_rds.endpoint}"
+    db_port = "${var.db_port}"
+    redis_host = "${module.redis.endpoint}"
+    redis_port = "${var.redis_port}"
+    mount_point = "${var.mount_point}"
   }
 }
 
@@ -38,10 +46,10 @@ module "postgresql_rds" {
   instance_type = "db.t2.medium"
   storage_type = "gp2"
   database_identifier = "gitlab-pgsql"
-  database_name = "gitlab_production"
-  database_username = "gtilab"
-  database_password = "password"
-  database_port = "5432"
+  database_name = "${var.db_database}"
+  database_username = "${var.db_username}"
+  database_password = "${var.db_password}"
+  database_port = "${var.db_port}"
   backup_retention_period = "30"
   backup_window = "04:00-04:30"
   maintenance_window = "sun:04:30-sun:05:30"
@@ -57,7 +65,7 @@ module "postgresql_rds" {
   alarm_free_memory_threshold = "128000000"
   alarm_actions = ["${aws_sns_topic.gitlab_pgsql_threshold.arn}"]
 
-  project = "gitlab"
+  project = "${var.project}"
   environment = "${var.env}"
 }
 
