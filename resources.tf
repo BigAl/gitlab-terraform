@@ -9,7 +9,7 @@ resource "aws_db_subnet_group" "gitlab_pgsql" {
 }
 resource "aws_db_parameter_group" "gitlab_pgsql" {
   name   = "gitlab-pg"
-  family = "postgres9.3"
+  family = "postgres9.6"
 }
 
 resource "aws_iam_role" "role" {
