@@ -5,7 +5,7 @@ variable "db_database" {
 }
 variable "db_username" {
   type        = "string"
-  default     = "gtilab"
+  default     = "gitlab"
 }
 variable "db_password" {
   type        = "string"

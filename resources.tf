@@ -29,13 +29,12 @@ resource "aws_security_group" "instance" {
   description = "gitlab instance security group"
   vpc_id      = "${var.vpc_id}"
 
-# review this it should be restrictred to only from elb SG
-  # HTTP access from anywhere
+  # HTTP access from ELB
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    security_groups = ["${aws_security_group.elb.id}"]
   }
   # temporary SSH access
   ingress {
