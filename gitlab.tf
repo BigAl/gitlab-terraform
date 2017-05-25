@@ -1,18 +1,3 @@
-# What we need
-# Postgress DB (done)
-# Redis (done)
-# Shared filesystem (done)
-# ASG with gitlab image ( need correct AMI for us-east-1)
-# ELB (done) Needs to be changed to https
-# Security groups ( done )
-#  EC2 can talk to REDIS
-#  EC2 can talk to postgres
-#  ELB can to to EC2
-# Created elsewhere VPC and subnets. ( Use demo account for now )
-# EFS working and mount via userdata (done)
-# Need to do gtilab configuration steps
-
-
 data "template_file" "userdata" {
   template = "${file("${path.module}/templates/userdata-rhel.tpl")}"
 
