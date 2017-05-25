@@ -101,7 +101,7 @@ module "gitlab_asg" {
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"
   asg_minimum_number_of_instances = "${var.asg_minimum_number_of_instances}"
-  load_balancer_names = "${var.elb_names}"
+  load_balancer_names = "${aws_elb.gtilab.name}"
   health_check_type = "${var.health_check_type}"
   availability_zones = "${var.availability_zones}"
   vpc_zone_subnets = "${var.private_subnets}"

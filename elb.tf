@@ -1,5 +1,5 @@
 ## re-wtite as a module
-resource "aws_elb" "web-elb" {
+resource "aws_elb" "gtilab" {
   name = "${var.project}-elb"
 
   subnets = "${var.dmz_subnet_list}"

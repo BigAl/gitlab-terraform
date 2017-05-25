@@ -84,9 +84,6 @@ variable "asg_number_of_instances" {
 variable "asg_minimum_number_of_instances" {
   default = 1
 }
-variable "elb_names" {
-  default = "gitlab-elb"
-}
 variable "health_check_type" {
   default = "EC2"
 }
@@ -94,22 +91,21 @@ variable "availability_zones" {
   default = "us-east-1a,us-east-1b"
 }
 variable "data_subnet_list" {
-  type = "list"
-  default = ["subnet-4968252c", "subnet-26d2d80b"]
+  type        = "list"
+  default     = ["subnet-4968252c", "subnet-26d2d80b"]
+  description = "where the redis will be - needs a list"
 }
 variable "data_subnets" {
-  default = "subnet-4968252c,subnet-26d2d80b"
-}
-variable "unsafe_subnets" {
-  default = "subnet-d66528b3,subnet-42dcd66f"
+  type        = "string"
+  default     = "subnet-4968252c,subnet-26d2d80b"
+  description = "where the efs will be - needs a string should fix this"
 }
 variable "private_subnets" {
-  default = "subnet-73d0da5e,subnet-4e6a272b"
-}
-variable "dmz_subnets" {
-  default = "subnet-2d652848,subnet-43dcd66e"
+  default     = "subnet-73d0da5e,subnet-4e6a272b"
+  description = "where the asg will be"
 }
 variable "dmz_subnet_list" {
   type        = "list"
   default     = ["subnet-2d652848", "subnet-43dcd66e"]
+  description = "where the elb will be"
 }
