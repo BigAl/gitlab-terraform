@@ -79,7 +79,7 @@ module "efs_mount" {
 }
 
 module "redis" {
-  source         = "github.com/terraform-community-modules/tf_aws_elasticache_redis?ref=1.0.1"
+  source         = "github.com/BigAl/tf_aws_elasticache_redis?ref=aviod_count_compute"
   env            = "${var.env}"
   name           = "${var.project}"
   redis_clusters = "2"
