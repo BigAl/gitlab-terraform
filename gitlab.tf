@@ -14,7 +14,7 @@
 
 
 data "template_file" "userdata" {
-  template = "${file("${path.module}/templates/userdata.tpl")}"
+  template = "${file("${path.module}/templates/userdata-rhel.tpl")}"
 
   vars {
     fs_id = "${module.efs_mount.file_system_id}"

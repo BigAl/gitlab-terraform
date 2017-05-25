@@ -67,7 +67,8 @@ variable "lc_name" {
 # US West (Oregon)	ami-7c099e1c
 
 variable "ami_id" {
-  default = "ami-81991f97"
+  default = "ami-57662541"
+  description = "Amzn AMI with omibus install"
 }
 variable "instance_type" {
   default = "t2.medium"
