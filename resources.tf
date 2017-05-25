@@ -36,6 +36,12 @@ resource "aws_security_group" "instance" {
     protocol    = "tcp"
     security_groups = ["${aws_security_group.elb.id}"]
   }
+  ingress {
+    from_port   = 2222
+    to_port     = 2222
+    protocol    = "tcp"
+    security_groups = ["${aws_security_group.elb.id}"]
+  }
   # temporary SSH access
   ingress {
     from_port   = 22
