@@ -90,13 +90,13 @@ module "redis" {
 }
 
 module "gitlab_asg" {
-  source = "github.com/terraform-community-modules/tf_aws_asg_elb"
+  source = "github.com/BigAl/tf_aws_asg_elb"
   lc_name = "${var.lc_name}"
   ami_id = "${var.ami_id}"
   instance_type = "${var.instance_type}"
   iam_instance_profile = "${aws_iam_instance_profile.app_profile.id}"
   key_name = "${var.key_name}"
-  security_group = ["${aws_security_group.instance.id}", "${module.efs_mount.ec2_security_group_id}"]
+  security_groups = ["${aws_security_group.instance.id}", "${module.efs_mount.ec2_security_group_id}"]
   user_data = "${data.template_file.userdata.rendered}"
   asg_name = "${var.asg_name}"
   asg_number_of_instances = "${var.asg_number_of_instances}"
