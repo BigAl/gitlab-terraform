@@ -27,7 +27,7 @@ module "postgresql_rds" {
   source                      = "github.com/azavea/terraform-aws-postgresql-rds"
   vpc_id                      = "${var.vpc_id}"
   allocated_storage           = "50"
-  engine_version              = "9.5.6"
+  engine_version              = "9.6.2"
   instance_type               = "db.t2.medium"
   storage_type                = "gp2"
   database_identifier         = "${var.project}-pgsql"
