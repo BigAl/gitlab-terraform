@@ -13,6 +13,12 @@ resource "aws_elb" "gtilab" {
 # once we have a certificate_domain enable this
 #    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
   }
+  listener {
+    instance_port     = 10400
+    instance_protocol = "tcp"
+    lb_port           = 10400
+    lb_protocol       = "tcp"
+  }
 
   health_check {
     healthy_threshold   = 2
@@ -49,9 +55,10 @@ resource "aws_security_group" "elb" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  # SSH access for gitlab
   ingress {
     from_port   = 10400
-    to_port     = 2222
+    to_port     = 10400
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
