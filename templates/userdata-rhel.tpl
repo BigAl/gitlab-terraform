@@ -1,6 +1,7 @@
 #!/bin/bash -ex
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
+echo "nameserver 169.254.169.253" > /etc/resolv.conf
 echo "Creating gitlab-data mount point"
 mkdir -p ${mount_point}
 echo "${fs_id}.efs.${region}.amazonaws.com:/ /gitlab-data nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
