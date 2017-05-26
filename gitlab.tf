@@ -2,16 +2,17 @@ data "template_file" "userdata" {
   template = "${file("${path.module}/templates/userdata-rhel.tpl")}"
 
   vars {
-    fs_id       = "${module.efs_mount.file_system_id}"
-    region      = "${data.aws_region.current.name}"
-    db_database = "${var.db_database}"
-    db_username = "${var.db_username}"
-    db_password = "${var.db_password}"
-    db_host     = "${module.postgresql_rds.endpoint}"
-    db_port     = "${var.db_port}"
-    redis_host  = "${module.redis.endpoint}"
-    redis_port  = "${var.redis_port}"
-    mount_point = "${var.mount_point}"
+    fs_id        = "${module.efs_mount.file_system_id}"
+    region       = "${data.aws_region.current.name}"
+    db_database  = "${var.db_database}"
+    db_username  = "${var.db_username}"
+    db_password  = "${var.db_password}"
+    db_host      = "${module.postgresql_rds.endpoint}"
+    db_port      = "${var.db_port}"
+    redis_host   = "${module.redis.endpoint}"
+    redis_port   = "${var.redis_port}"
+    mount_point  = "${var.mount_point}"
+    external_url = "${aws_elb.gtilab.dns_name}"
   }
 }
 

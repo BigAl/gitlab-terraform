@@ -9,6 +9,7 @@ mount ${mount_point}
 echo "Creating gitlab.rb"
 
 cat >> /etc/gitlab/gitlab.rb <<EOF
+external_url '${external_url}'
 postgresql['enable'] = false
 gitlab_rails['db_adapter'] = "postgresql"
 gitlab_rails['db_encoding'] = "utf8"
