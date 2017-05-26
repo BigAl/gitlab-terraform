@@ -14,9 +14,16 @@ resource "aws_elb" "gtilab" {
 #    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
   }
   listener {
-    instance_port     = 10400
+    instance_port     = 22
     instance_protocol = "tcp"
     lb_port           = 10400
+    lb_protocol       = "tcp"
+  }
+
+  listener {
+    instance_port     = 22
+    instance_protocol = "tcp"
+    lb_port           = 22
     lb_protocol       = "tcp"
   }
 
