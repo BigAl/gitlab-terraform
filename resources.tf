@@ -37,8 +37,8 @@ resource "aws_security_group" "instance" {
     security_groups = ["${aws_security_group.elb.id}"]
   }
   ingress {
-    from_port   = 2222
-    to_port     = 2222
+    from_port   = 10400
+    to_port     = 10400
     protocol    = "tcp"
     security_groups = ["${aws_security_group.elb.id}"]
   }
