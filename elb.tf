@@ -8,10 +8,9 @@ resource "aws_elb" "gtilab" {
   listener {
     instance_port      = 80
     instance_protocol  = "http"
-    lb_port            = 80
-    lb_protocol        = "http"
-# once we have a certificate_domain enable this
-#    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
+    lb_port            = 443
+    lb_protocol        = "https"
+    ssl_certificate_id = "${data.aws_acm_certificate.ssl_certificate_id.arn}"
   }
   listener {
     instance_port     = 22
@@ -31,7 +30,7 @@ resource "aws_elb" "gtilab" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:80/explore"
+    target              = "HTTP:443/explore"
     interval            = 5
   }
 
@@ -57,8 +56,8 @@ resource "aws_security_group" "elb" {
 
   # HTTP access from anywhere
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
